@@ -1,0 +1,6 @@
+I:\Study\Dot_Net_Code\MVC\MyMVC\LinuxJexus\bin\LinuxJexus.dll.config
+I:\Study\Dot_Net_Code\MVC\MyMVC\LinuxJexus\bin\LinuxJexus.dll
+I:\Study\Dot_Net_Code\MVC\MyMVC\LinuxJexus\bin\LinuxJexus.pdb
+I:\Study\Dot_Net_Code\MVC\MyMVC\LinuxJexus\obj\Debug\LinuxJexus.dll
+I:\Study\Dot_Net_Code\MVC\MyMVC\LinuxJexus\obj\Debug\LinuxJexus.pdb
+I:\Study\Dot_Net_Code\MVC\MyMVC\LinuxJexus\obj\Debug\LinuxJexus.csprojResolveAssemblyReference.cache

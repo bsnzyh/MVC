@@ -1,0 +1,54 @@
+﻿@model P02MVCAjax.Models.Student
+@{
+    ViewBag.Title = "ModifyPage";
+}
+@section headSection{
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <style type="text/css">
+        #tbData, .validation-summary-errors {
+            border: 1px solid #0094ff;
+            margin: 10px auto;
+            width: 500px;
+            padding: 5px;
+        }
+
+            #tbData td {
+                border: 1px solid #0094ff;
+            }
+    </style>
+}
+@{Html.EnableClientValidation(true);}
+@using (Html.BeginForm("ModifyPage", "Student", FormMethod.Post, new { id = "form1", datatype = "12" }))
+{
+    <table id="tbData">
+        <tr>
+            <td>姓名:</td>
+            <td>@Html.TextBoxFor(s => s.Name)</td>
+            <td>@Html.ValidationMessageFor(s => s.Name)</td>
+        </tr>
+        <tr>
+            <td>班级:</td>
+            <td>
+                @Html.DropDownListFor(s => s.CId, ViewBag.classes as IEnumerable<SelectListItem>)
+                @*@Html.DropDownList("CId",ViewBag.selList as IEnumerable<SelectListItem>)*@
+            </td>
+           
+        </tr>
+        <tr>
+            <td>性别：</td>
+            <td>
+                <!--生成 单选按钮的 方法，会根据 属性值 与 默认值 比较，如果相等，则设置为 选中！-->
+                <!-- 也就是说，只要 当前Model中的Gender属性值，与 某个 单选按钮方法 设置的 value值一样，则自动设置为选中！ -->
+                @Html.RadioButtonFor(s => s.Gender, "男") 男
+                @Html.RadioButtonFor(s => s.Gender, "女") 女
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="保存" />
+            </td>
+        </tr>
+    </table>
+    @Html.ValidationSummary(false);
+}

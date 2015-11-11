@@ -1,0 +1,5 @@
+I:\Study\Dot_Net_Code\MVC\MyMVC\P05Controller\bin\Debug\P05Controller.dll
+I:\Study\Dot_Net_Code\MVC\MyMVC\P05Controller\bin\Debug\P05Controller.pdb
+I:\Study\Dot_Net_Code\MVC\MyMVC\P05Controller\obj\Debug\P05Controller.dll
+I:\Study\Dot_Net_Code\MVC\MyMVC\P05Controller\obj\Debug\P05Controller.pdb
+I:\Study\Dot_Net_Code\MVC\MyMVC\P05Controller\obj\Debug\P05Controller.csprojResolveAssemblyReference.cache

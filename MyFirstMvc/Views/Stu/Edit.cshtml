@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+@model MyFirstMvc.Models.Student
+<!--指定了 model 类型的视图 就叫做强类型视图，好处：vs可以直接推断出model的类型，从而提供智能提示-->
+<!DOCTYPE html>
+@using MyFirstMvc.Models;
+<html>
+<head>
+    @StackExchange.Profiling.MiniProfiler.RenderIncludes()
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <form action="/Stu/Edit" method="post">
+       <input type="hidden" name="Id" value="@Model.Id" />
+        <table>
+            <tr>
+                <td>姓名:</td>
+                <td><input type="text" name="Name" value="@Model.Name" /></td>
+            </tr>
+            <tr>
+                <td>班级:</td>
+                <td>
+                    @*@Html.DropDownList("CId", ViewBag.classes as IEnumerable<SelectListItem>)*@
+                <select name="CId">
+                    @foreach (MyFirstMvc.Models.Class c in ViewBag.classes as List<MyFirstMvc.Models.Class>)
+                    {
+                        if (c.CID == @Model.CId)
+                        {
+                            <option selected="selected" value="@c.CID">@c.CName</option>
+                        }
+                        else
+                        {
+                            <option value="@c.CID">@c.CName</option>
+                        }
+                    }
+                </select>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="保存" />
+</form>
+</body>
+</html>

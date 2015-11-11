@@ -1,0 +1,5 @@
+I:\Study\Dot_Net_Code\MVC\MyMVC\P06UserAreaController\bin\Debug\P06UserAreaController.dll
+I:\Study\Dot_Net_Code\MVC\MyMVC\P06UserAreaController\bin\Debug\P06UserAreaController.pdb
+I:\Study\Dot_Net_Code\MVC\MyMVC\P06UserAreaController\obj\Debug\P06UserAreaController.dll
+I:\Study\Dot_Net_Code\MVC\MyMVC\P06UserAreaController\obj\Debug\P06UserAreaController.pdb
+I:\Study\Dot_Net_Code\MVC\MyMVC\P06UserAreaController\obj\Debug\P06UserAreaController.csprojResolveAssemblyReference.cache

@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<br />直接 编写 url 会造成 url格式 固定不灵活<br />
+<a href="/Stu/index">去玩</a>
+
+<br />为此，可以使用 Url.Action方法 根据 路由规则 生成 url地址<br />
+<a href="@Url.Action("index3","stu3")">去玩-Url.Action</a>
+<br />也可以使用 Url.RouteUrl 根据 指定的 路由规则 生成 url地址<br />
+<a href="@Url.RouteUrl("Default2", new { controller = "Stu3", action = "Index3", id = UrlParameter.Optional  })">去玩-Url.RouteUrl</a>
+
+
+<h2>在视图上直接请求 其他Action</h2>
+@Html.Action("Part")
+
+<h2>Html.ActionLink 生成超链接</h2>
+@Html.ActionLink("我是超链接~", "Part", "Home", new { id = "btnLink", style = "border:1px solid #0094ff" })
+
+
+<h2> BeginForm + EndForm 创建表单标签</h2>
+@Html.BeginForm("Login", "User", FormMethod.Post, new { id = "form2" })
+<input type="text" />
+@{Html.EndForm();}
+
+
+<h2>BeginForm{}创建表单标签 -- 推荐</h2>
+@using (Html.BeginForm("Login", "User", FormMethod.Post, new { id = "form1" }))
+{
+    @Html.TextBox("txtName", "我是文本框", new { style = "border:1px solid #0094ff;" });<br />
+    @Html.TextArea("txtContent", "我是文本域");
+
+}

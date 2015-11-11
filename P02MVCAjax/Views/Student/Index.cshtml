@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "学生信息列表";
+}
+@section headSection{
+    <script src="~/Scripts/jquery.tmpl.min.js"></script>
+    <script type="text/x-jquery-tmpl" id="trTemp">
+        <tr>
+            <td>${Id}</td>
+            <td>${Name}</td>
+            <td>${Class.CName}</td>
+            <td>${Gender}</td>
+            <td>
+                <a href="@Url.Action("ModifyPage","Student")/${Id}">改</a>
+                <a href="javascript:DoDel(${Id})">删</a>
+            </td>
+        </tr>
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $(function () {
+                //0.关闭Jquery的浏览器缓存
+                $.ajaxSetup({cache: false });
+                //1.请求第一页数据
+                loadPageList(1);
+               
+            });
+        });
+        function loadPageList(pageIndex){
+            $.getJSON('/Student/List/'+ pageIndex,null,function(jsonData){
+                if (jsonData.Statu == "ok") {
+                    $("#tbList tr:gt(0)").remove();
+                    $("#trTemp").tmpl(jsonData.Data.PagedData).appendTo("#tbList");
+                }
+            }); 
+        }
+    </script>
+}
+<table id="tbList">
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>班级名</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+</table>

@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>异步超链接+异步表单</title>
+    <script type="text/javascript" src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        function sucFunc(resText) {
+            alert(resText);
+        }
+        function errFunc(xhr) {
+            alert(xhr.readyState);
+        }
+    </script>
+</head>
+<body>
+    <h1>异步超链接</h1>
+    @Ajax.ActionLink("获取服务器数据", "Part", "AjaxHelper", new AjaxOptions() { HttpMethod = "Get", InsertionMode = InsertionMode.Replace, UpdateTargetId = "waitTemp", OnSuccess = "sucFunc", LoadingElementId = "waitTemp" })
+
+    <img id="waitTemp" style="display:none" width="100" height="100" src="/Content/imgs/loading.gif" />
+    <hr />
+    <h1>异步表单：</h1>
+    @using (Ajax.BeginForm("GetTime", "AjaxHelper", new AjaxOptions()
+    {
+        HttpMethod = "post",
+        OnSuccess = "sucFunc",
+        OnFailure = "errFunc",
+        LoadingElementId = "imgLoad"
+    }))
+    {
+        <input type="text" name="Text" />
+        <input type="submit" />
+        <br />
+        <img id="imgLoad" style="display:none" width="50" height="50" src="/Content/imgs/loading.gif" />
+    }
+</body>
+</html>
+@*function fail(xhr){ alert("方法参数是异步对象"+ xhr.responseText); }
+function complete(xhr){ alert("方法参数是异步对象"+ xhr.responseText); }
+function success(text){ alert("方法参数是响应报文体"+ text); }*@
+
+@*UpdateTargetId：
+   目标元素id，获取服务器响应后，将获取的响应报文体显示到目标元素的innerHTML中。
+InsertionMode：   InsertAfter 插入目标元素原有内容之后；InsertBefore 插入目标元素原有内容之前；
+   Replace 替换目标元素原有内容
+LoadingElementId：异步对象readyState==4之前显示"正在加载"状态的元素id*@
+
+
+

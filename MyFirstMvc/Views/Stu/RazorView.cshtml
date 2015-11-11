@@ -1,0 +1,127 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RazorView</title>
+</head>
+<body>
+    <!--1.0 Razor C#语句块-->
+    @{
+        for (int i = 0; i < 10; i++)
+        {
+            //Response.Write("<div></div>");
+            <div>哈哈哈 @Model.CName~~~~~</div>
+            //Response.Write("<div>哈哈哈哈~~~~</div>");
+        }
+    }
+    <!--2.0 输出. 使用小括号-->
+    <div>@(ViewBag.CName).CName</div>
+    结果：
+    <div>aa.CName</div>
+
+    <!--3.0 输出 Email-->
+    @{
+        //定义一个 匿名类 变量
+        var qq = new { com = "126" };
+    }
+
+    <div>JamesZou707@qq.com</div>
+    <!--             输出qq变量的com属性-->
+    <div>JamesZou707 @qq.com</div>
+
+    <hr />
+    <!--4.0 输出 字符串-->
+    <!--4.1直接使用@变量 输出变量值，相当于 Response.Write(qq.com)-->
+    @qq.com
+    <!--4.1 代码块 输出 字符串-->
+    @{
+        Response.Write(qq.com);
+    }
+    <hr />
+    <!--5.0 输出 html字符串 -->
+    @{
+        string strHtml = "<input type='text'/>";
+        @strHtml
+    }
+    <!--5.1 razor 会自动 转义 输出字符串中的 尖括号 <> -->
+    @strHtml
+
+    <!--5.2 Response输出 html，缺点 ResponseWrite的内容 都在页面最上面-->
+    @{
+        Response.Write(strHtml);
+    }
+
+    <!--5.3 使用Html.Raw方法 输出不转义的html，因为 方法会返回 一个 HtmlString 对象-->
+    @Html.Raw(strHtml)
+
+
+    <!--5.4 使用HtmlString 输出不转义的html-->
+    @{
+        HtmlString htmlRaw = new HtmlString("<input type='button' value='RawHTML'/>");
+        @htmlRaw.ToHtmlString();
+    }
+
+
+    <!--5.5 使用MVCHtmlString静态方法Create输出不转义的html-->
+    @{
+        HtmlString strHtml2 = MvcHtmlString.Create("<input type='radio'/>");
+        @strHtml2
+    }
+
+    <!--6.0 在视图中 声明"方法" ，此方法 就是 在 视图类中 添加一个 返回值为 HelperResult 的方法-->
+    <!--注意：一般 不在视图上定义方法，因为 方法就是业务，而mvc本身就是为了 把 业务 和 视图 分离开-->
+    <!-- 之所以 Razor支持 在视图上 定义方法，就是为了 解决 视图上要重复  输出 html代码 块 的情况 -->
+    @helper ShowHi(string a)
+{
+    <div style="border:1px solid #0094ff;">哈哈哈~~~~ @a</div>
+}
+
+    @ShowHi("小孩~~~");
+
+    <!--6.1 在视图中 调用 无返回值 方法，必须要加上大括号 && 重要：在当前视图 中 传递参数 给另外一个视图-->
+    @{ViewData["partData"] = "哇哈哈哈哈";}
+    @{Html.RenderPartial("~/Views/Stu/PartTargetView.cshtml");}
+
+    <!--6.2 在视图中 调用 有返回值方法，不需要加 大括号； 由此看出@后直接跟变量 或 带返回值的方法，会直接在此输出 变量内容 或 方法返回的值-->
+    @Html.TextBox("txtname")
+
+    <!--6.3调用泛型方法 需要 加大括号-->
+    @*
+        @{ShowObj<object>()}
+    *@
+
+    <!--7.0 注释-->
+    @*
+        哇哈哈哈哈，我们是注释~~~~~~~~~~~！
+    *@
+
+    @{
+    //哈哈哈~~，我是单行注释
+    }
+
+    <!--8.0 在C#代码块中 输出文本-->
+    @{
+        <div>我爱广州</div>
+        <!--使用 Razor内置标签 <text> -->
+        <text>我爱广州</text>
+        <!--方式二-->
+        @:我爱广州
+    }
+
+    <!--9.0 在视图中 输出@符号-->
+    @@我被转义了
+
+
+    <!--10.0 访问内部对象属性-->
+    @Response
+
+    @("211".AsInt())
+
+    @Href("~/Home/Index");
+</body>
+</html>

@@ -1,0 +1,5 @@
+I:\Study\Dot_Net_Code\MVC\MyMVC\P07AdminAreaController\bin\Debug\P07AdminAreaController.dll
+I:\Study\Dot_Net_Code\MVC\MyMVC\P07AdminAreaController\bin\Debug\P07AdminAreaController.pdb
+I:\Study\Dot_Net_Code\MVC\MyMVC\P07AdminAreaController\obj\Debug\P07AdminAreaController.dll
+I:\Study\Dot_Net_Code\MVC\MyMVC\P07AdminAreaController\obj\Debug\P07AdminAreaController.pdb
+I:\Study\Dot_Net_Code\MVC\MyMVC\P07AdminAreaController\obj\Debug\P07AdminAreaController.csprojResolveAssemblyReference.cache

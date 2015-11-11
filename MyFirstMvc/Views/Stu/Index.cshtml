@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+@using MyFirstMvc.Models;<!--引入Student所在的命名空间-->
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table id="tbList">
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>班级名</th>
+            <th>性别</th>
+            <th colspan="2">操作</th>
+        </tr>
+        <!--视图包含一个 Model属性，可以通过控制器Action方法里的 View(modeldata)赋值  -->
+     @foreach(Student stu in Model as List<Student>)
+     {
+     <tr>
+         <td>@stu.Id</td>
+         <td>@stu.Name</td>
+         <td>@stu.Class.CName</td>
+         <td>@stu.Gender</td>
+         <td><a href="/Stu/Edit/@stu.Id">编辑</a></td>
+         <td><a href="/Stu/Del/@stu.Id">删除</a></td>
+         <td></td>
+     </tr>
+     }
+        
+    </table>
+</body>
+</html>

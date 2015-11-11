@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ItcastSIMModelStoreContainer" CdmEntityContainer="ItcastSIMEntities">
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="ItcastSIMModel.Class">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="CCount" ColumnName="CCount" />
+          <ScalarProperty Name="CImg" ColumnName="CImg" />
+          <ScalarProperty Name="CIsDel" ColumnName="CIsDel" />
+          <ScalarProperty Name="CAddTime" ColumnName="CAddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="ItcastSIMModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CId" ColumnName="CId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
